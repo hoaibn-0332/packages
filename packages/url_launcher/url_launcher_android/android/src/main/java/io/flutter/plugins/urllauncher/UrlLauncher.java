@@ -150,7 +150,9 @@ final class UrlLauncher implements UrlLauncherApi {
       @NonNull Bundle headersBundle,
       @NonNull BrowserOptions options) {
     CustomTabsIntent customTabsIntent =
-        new CustomTabsIntent.Builder().setShowTitle(options.getShowTitle()).build();
+        new CustomTabsIntent.Builder()
+                .setSendToExternalDefaultHandlerEnabled(true)
+                .setShowTitle(options.getShowTitle()).build();
     customTabsIntent.intent.putExtra(Browser.EXTRA_HEADERS, headersBundle);
 
     try {
